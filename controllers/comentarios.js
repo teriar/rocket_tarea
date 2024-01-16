@@ -1,11 +1,12 @@
 const {response} = require('express')
-const {conectClient} = require('../database/config')
 
-const envioFotos = async (req,res)=>{
-    const postulante_id = 254
+const {conectComentario} = require('../database/comentario.config')
+
+const comentarios = async (req,res)=>{
+    const postulante_id = 971254324678
     const {id} =req.params;
-    const {comentario} = req.body
-   
+    const comentario = req.body.comentario
+    console.log(postulante_id,id,comentario)
    if(!id){
     res.status(400).json({
         msg: 'no existe id'
@@ -13,7 +14,8 @@ const envioFotos = async (req,res)=>{
     return
    }
    
-   const response = await conectClient(`insert into comentarios (arbol_id,postulante_id,comentario) values (${id},${postulante_id},${comentario}) `)
+   const values=[id,postulante_id,comentario]
+   const response = await conectComentario(`insert into comentarios (arbol_id,postulante_id,comentario) values ($1,$2,$3)`,values)
    
    
    res.status(200).json({response})
@@ -21,4 +23,4 @@ const envioFotos = async (req,res)=>{
 }
 
 
-module.exports={envioFotos}
+module.exports={comentarios}

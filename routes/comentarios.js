@@ -1,10 +1,10 @@
 const { Router } = require('express')
-const {envioFotos} = require('../controllers/fotos')
+const {comentarios} = require('../controllers/comentarios')
 //inicializamos el router
 const router = Router()
 
 
-router.get('/:id',(envioFotos))
+router.post('/:id',(comentarios))
 
 
 module.exports = router

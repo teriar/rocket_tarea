@@ -17,7 +17,7 @@ class Server{
             arboles:'/api/arboles',
             fotos: '/api/fotos',
             ubicaciones:'/api/ubicaciones',
-            comentarios:'/api/commentarios'
+            comentarios:'/api/comentarios',
            
         }
 
